@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Overpass:wght@300&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+  <title>Frontend Mentor | [Blogr]</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    /* Background gradient - body:
+
+- Very dark gray blue: hsl(237, 17%, 21%)
+- Very dark desaturated blue: hsl(237, 23%, 32%)
+
+
+font-family: 'Overpass', sans-serif;
+font-family: 'Ubuntu', sans-serif;
+ */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-size: 16px;
+      color: hsl(207, 13%, 34%);
+      font-family: 'Overpass', sans-serif;
+      font-weight: 600;
+    }
+
+    button {
+      border: none;
+      color: hsl(0, 0%, 100%);
+      background-color: transparent;
+      padding: 10px 20px;
+      outline: none;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: 'Ubuntu', sans-serif;
+      transition: .2s;
+    }
+
+    button.white {
+      border: 2px solid hsl(0, 0%, 100%);
+      border-radius: 20px;
+      background-color: #fff;
+      color: hsl(356, 100%, 66%);
+      min-width: 130px;
+    }
+
+    button.white:hover {
+      background-color: hsl(355, 100%, 74%);
+      color: hsl(0, 0%, 100%);
+      border-color: hsl(355, 100%, 74%);
+    }
+
+    button.transparent {
+      min-width: 130px;
+      border: 2px solid hsl(0, 0%, 100%);
+      border-radius: 20px;
+      margin-left: 10px;
+    }
+
+    button.transparent:hover {
+      background-color: hsl(0, 0%, 100%);
+      color: hsl(356, 100%, 66%);
+    }
+
+    button.menu-btn {
+      width: 120px;
+    }
+
+    button.menu-btn:hover {
+      text-decoration: underline;
+    }
+
+    nav div.dropdown-container:hover div.dropdown {
+      display: block;
+    }
+
+    h3,
+    h4 {
+      color: hsl(208, 49%, 24%);
+    }
+
+    header {
+      background-image: url(/blogr-landing-page-main/images/bg-pattern-intro.svg), linear-gradient(to right, hsl(13, 100%, 72%), hsl(353, 100%, 62%));
+      background-position: center;
+      text-align: center;
+      color: hsl(0, 0%, 100%);
+      padding-bottom: 200px;
+      border-radius: 0 0 0 80px;
+    }
+
+    /* Navigation */
+    nav {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      padding: 50px;
+    }
+
+    nav .logo {
+      margin: 0 30px 0 40px;
+    }
+
+    nav div.dropdown-container {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-width: 120px;
+      padding: 10px;
+    }
+
+    nav div.dropdown-container div.dropdown {
+      position: absolute;
+      top: 50px;
+      padding: 20px;
+      display: none;
+      flex-direction: column;
+      background-color: hsl(0, 0%, 100%);
+      z-index: 1;
+      width: 200px;
+      text-align: left;
+      border-radius: 10px;
+      box-shadow: 0.1em 0.1em .1em #000;
+    }
+
+    nav div.dropdown-container div.dropdown a {
+      display: block;
+      text-decoration: none;
+      margin: 5px auto;
+      color: hsl(208, 49%, 24%);
+    }
+
+    nav div.dropdown-container div.dropdown a:hover {
+      color: hsl(240, 10%, 0%);
+    }
+
+    nav div.login {
+      display: flex;
+      margin-left: 40%;
+    }
+
+    header h1 {
+      padding: 20px 0 20px;
+      width: 80%;
+      margin: 0 auto;
+      font-size: 48px;
+    }
+
+    header p {
+      width: 60%;
+      margin: 0 auto;
+      font-size: 16px;
+      padding-bottom: 40px;
+      font-weight: 300;
+    }
+
+    section.first-section {
+      position: relative;
+      overflow: hidden;
+      margin-top: 150px;
+      margin-bottom: 150px;
+    }
+
+    section.first-section h3.fsection-title {
+      width: 50%;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 38px;
+      padding-bottom: 100px;
+
+    }
+
+    section.first-section article {
+      width: 50%;
+      padding: 40px 80px;
+    }
+
+    section.first-section article p {
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    section.first-section article h4 {
+      font-size: 28px;
+      padding: 20px 0;
+    }
+
+    section.first-section img {
+      position: absolute;
+      top: 0;
+      right: -17.5%;
+      width: 60%;
+    }
+
+    section.mid-section {
+      position: relative;
+      display: flex;
+      flex-direction: row-reverse;
+      background-image: url(/blogr-landing-page-main/images/bg-pattern-circles.svg), linear-gradient(to right, hsl(237, 17%, 21%), hsl(237, 23%, 32%));
+      background-position: -60% 85%;
+      background-repeat: no-repeat;
+      border-radius: 0 80px 0 80px;
+      color: hsl(0, 0%, 100%);
+    }
+
+    section.mid-section article {
+      width: 45%;
+      padding: 60px;
+
+    }
+
+    section.mid-section article h4 {
+      color: hsl(0, 0%, 100%);
+      font-size: 28px;
+      padding: 30px;
+
+    }
+
+    section.mid-section article p {
+      font-weight: 300;
+      line-height: 1.8;
+      padding: 10px 30px;
+    }
+
+    section.mid-section img {
+      position: absolute;
+      width: 35%;
+      top: -17.5%;
+      left: 10%;
+    }
+
+    section.third-section {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      margin-top: 300px;
+      margin-bottom: 150px;
+    }
+
+    section.third-section article {
+      width: 50%;
+      padding: 10px 80px;
+    }
+
+    section.third-section article h4 {
+      font-size: 28px;
+      padding: 20px 0;
+    }
+
+    section.third-section article p {
+      line-height: 1.8;
+    }
+
+    section.third-section img {
+      position: absolute;
+      top: -50%;
+      left: -20%;
+    }
+
+    footer {
+      display: flex;
+      background-color: hsl(240, 10%, 16%);
+      color: #fff;
+      padding: 0px 120px 40px;
+      border-radius: 0 100px 0 0;
+    }
+
+    footer img {
+      padding-top: 60px;
+      height: 10%;
+    }
+
+    footer div {
+      display: flex;
+      flex-direction: column;
+      padding: 40px 100px;
+    }
+
+    footer div h5 {
+      padding: 20px 0;
+    }
+
+    footer div a {
+      color: hsl(240, 2%, 79%);
+      text-decoration: none;
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 1.8;
+      padding: 1px;
+    }
+
+    footer div a:hover {
+      border-bottom: 1px solid hsl(0, 0%, 100%);
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="menu">
+      <img class="logo" src="/blogr-landing-page-main/images/logo.svg" alt="">
+      <div class="dropdown-container">
+        <button class="menu-btn">Product <img src="/blogr-landing-page-main/images/icon-arrow-light.svg"
+            alt=""></button>
+        <div class="dropdown">
+          <a href="#">Overview</a>
+          <a href="#">Pricing</a>
+          <a href="#">Marketplace</a>
+          <a href="#">Features</a>
+          <a href="#">Integrations</a>
+        </div>
+      </div>
+      <div class="dropdown-container">
+        <button class="menu-btn">Company <img src="/blogr-landing-page-main/images/icon-arrow-light.svg"
+            alt=""></button>
+        <div class="dropdown">
+          <a href="#">About</a>
+          <a href="#">Team</a>
+          <a href="#">Blog</a>
+          <a href="#">Careers</a>
+        </div>
+      </div>
+      <div class="dropdown-container">
+        <button class="menu-btn">Connect <img src="/blogr-landing-page-main/images/icon-arrow-light.svg"
+            alt=""></button>
+        <div class="dropdown">
+          <a href="#">Contact</a>
+          <a href="#">Newsletter</a>
+          <a href="#">LinkedIn</a>
+        </div>
+      </div>
+      <div class="login">
+        <button class="login-btn">Login</button>
+        <button class="white">Sign Up</button>
+      </div>
+
+    </nav>
+
+    <h1>A modern publishing platform</h1>
+    <p>Grow your audience and build your online brand</p>
+    <div class="header-btns">
+      <button class="white">Start for Free</button>
+      <button class="transparent">Learn More</button>
+    </div>
+  </header>
+  <main>
+    <section class="first-section">
+      <h3 class="fsection-title">Designed for the future</h3>
+      <article>
+        <h4>Introducing an extensible editor</h4>
+        <p>Blogr features an exceedingly intuitive interface which lets you focus on one thing: creating content.
+          The editor supports management of multiple blogs and allows easy manipulation of embeds such as images,
+          videos, and Markdown. Extensibility with plugins and themes provide easy ways to add functionality or
+          change the looks of a blog.</p>
+      </article>
+      <article>
+        <h4>Robust content management</h4>
+        <p>Flexible content management enables users to easily move through posts. Increase the usability of your blog
+          by adding customized categories, sections, format, or flow. With this functionality, you’re in full control.
+        </p>
+      </article>
+      <img src="/blogr-landing-page-main/images/illustration-editor-desktop.svg" alt="">
+    </section>
+    <section class="mid-section">
+      <article>
+        <h4>State of the Art Infrastructure</h4>
+        <p>With reliability and speed in mind, worldwide data centers provide the backbone for ultra-fast connectivity.
+          This ensures your site will load instantly, no matter where your readers are, keeping your site competitive.
+        </p>
+      </article>
+      <img src="/blogr-landing-page-main/images/illustration-phones.svg" alt="">
+    </section>
+    <section class="third-section">
+      <img src="/blogr-landing-page-main/images/illustration-laptop-desktop.svg" alt="">
+      <article>
+        <h4>Free, open, simple</h4>
+        <p>Blogr is a free and open source application backed by a large community of helpful developers. It supports
+          features such as code syntax highlighting, RSS feeds, social media integration, third-party commenting tools,
+          and works seamlessly with Google Analytics. The architecture is clean and is relatively easy to learn.</p>
+      </article>
+      <article>
+        <h4>Powerful tooling</h4>
+        <p>Batteries included. We built a simple and straightforward CLI tool that makes customization and deployment a
+          breeze,
+          but
+          capable of producing even the most complicated sites.</p>
+      </article>
+    </section>
+  </main>
+  <footer>
+    <img src="/blogr-landing-page-main/images/logo.svg" alt="">
+    <div class="product">
+      <h5>Product</h5>
+
+      <a href="#">Overview</a>
+      <a href="#">Pricing</a>
+      <a href="#">Marketplace</a>
+      <a href="#">Features</a>
+      <a href="#">Integrations</a>
+    </div>
+    <div class="contact">
+      <h5>Company</h5>
+
+      <a href="#">About</a>
+      <a href="#">Team</a>
+      <a href="#">Blog</a>
+      <a href="#">Careers</a>
+    </div>
+    <div class="connect">
+      <h5>Connect</h5>
+
+      <a href="#">Contact</a>
+      <a href="#">Newsletter</a>
+      <a href="#">LinkedIn</a>
+    </div>
+  </footer>
+
+</body>
+
+</html>
